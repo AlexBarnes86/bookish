@@ -20,8 +20,19 @@
 	<div id="bookGalleryPane" class="contentPane">
 		<c:if test="${books != null}">
 			<c:forEach items="${books}" var="book">
-				<div class="galleryBook">
-					<a href="<spring:url value="${book.link}"/>"><img src="${book.image}" alt="${book.title}"></a>
+				<c:set var="book" value="${book.value}"/>
+				
+				<c:choose>
+					<c:when test="${curBook != null && curBook.id == book.id}">
+						<c:set var="bookClass" value="galleryBook selectedBook"/>
+					</c:when>
+					<c:otherwise>
+						<c:set var="bookClass" value="galleryBook"/>
+					</c:otherwise>
+				</c:choose>
+				
+				<div class="${bookClass}">
+					<a href="<spring:url value="/gallery?selected=${book.id}"/>"><img src="${book.image}" alt="${book.title}"></a>
 				</div>
 			</c:forEach>
 		</c:if>
@@ -40,7 +51,12 @@
 		</div>
 	</div>
 	<div id="bookSummaryPane" class="contentPaneRight">
-		<spring:escapeBody>${curBook.summary}</spring:escapeBody>
+		<div id="bookSummary">
+			<c:if test="${curBook != null}">
+				<h3><a href="#">${curBook.title}</a></h3>
+				<spring:escapeBody>${curBook.summary}</spring:escapeBody>
+			</c:if>
+		</div>
 	</div>
 </div>
 

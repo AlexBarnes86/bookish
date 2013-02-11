@@ -19,6 +19,10 @@ html, body {
 	height: 5%;
 }
 
+#searchBar, #controlButtons {
+	float: right;
+}
+
 .contentPaneLeft {
 	height: 78%;
 	
@@ -62,6 +66,13 @@ html, body {
 	box-shadow:  5px 5px 5px 5px rgba(0, 0, 0, .5);
 }
 
+#bookSummary {
+	margin: 10px;
+	margin-right: 0px;
+	height: 90%;
+	overflow-y: auto;
+}
+
 .galleryBook {
 	float:left;
 	border: 1px solid black;
@@ -75,4 +86,8 @@ html, body {
 .galleryBook img {
 	width: 100px;
 	height: 150px;
+}
+
+.selectedBook {
+	border: 3px solid yellow;
 }

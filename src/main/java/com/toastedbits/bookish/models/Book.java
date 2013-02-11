@@ -1,11 +1,18 @@
 package com.toastedbits.bookish.models;
 
 public class Book {
+	private int id;
 	private String image;
 	private String title;
 	private String link;
 	private String summary;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getImage() {
 		return image;
 	}
