@@ -1,8 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>	  <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>		 <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -18,6 +14,7 @@
 		<%--TODO: Place favicon.ico and apple-touch-icon.png in the root directory --%>
 		
 		<link rel="stylesheet" href="<spring:url value="css/normalize.2.1.0.css"/>">
+		<link rel="stylesheet" href="<spring:url value="css/threecolumn.css"/>">
 		<link rel="stylesheet" href="<spring:url value="css/main.css"/>">
 		<%--Use http://modernizr.com/downloads/modernizr-latest.js for debugging --%>
 		<script src="<spring:url value="js/vendor/modernizr-2.6.2.min.js"/>"></script>
@@ -26,14 +23,3 @@
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
-	
-		<!-- Add your site or application content here -->
-		<h1>Bookish</h1>
-		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<spring:url value="js/vendor/jquery-1.9.0.min.js" var="jquery_url"/>
-		<script>window.jQuery || document.write('<script src="${jquery_url}"><\/script>')</script>
-		<script src="<spring:url value="js/plugins.js"/>"></script>
-		<script src="<spring:url value="js/main.js"/>"></script>
-	</body>
-</html>
