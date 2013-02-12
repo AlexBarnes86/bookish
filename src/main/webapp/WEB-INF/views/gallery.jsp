@@ -36,6 +36,11 @@
 				</div>
 			</c:forEach>
 		</c:if>
+		<div class="adminPanel">
+			<form:form method="post">
+				<input type="submit" value="Create new Book"/>
+			</form:form>
+		</div>
 	</div>
 </div>
 

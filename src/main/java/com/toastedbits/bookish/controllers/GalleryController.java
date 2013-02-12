@@ -21,10 +21,18 @@ public class GalleryController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String get(ModelMap model, @RequestParam(value="selected", required=false) Integer id) {
-		Map<Integer, Book> books = bookService.getBooks(new Category());
+		Map<Long, Book> books = bookService.getBooks(new Category());
 		model.put("books", books);
 		model.put("curBook", books.get(id));
 		
+		return "gallery";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public String post(ModelMap model) {
+		bookService.insertSampleBook();
+		Map<Long, Book> books = bookService.getBooks(new Category());
+		model.put("books", books);
 		return "gallery";
 	}
 }
