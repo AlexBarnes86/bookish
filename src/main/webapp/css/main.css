@@ -3,7 +3,7 @@
 html, body {
 	min-height: 600px;
 	height: 100%;
-	min-width: 100%;
+	min-width: 800px;
 	width: 100%;
 	overflow: hidden;
 	background-image: url('../images/paper_1_@2X.png');

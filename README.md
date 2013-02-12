@@ -1,4 +1,4 @@
 Bookish
 =======
 
-Book management platform
+Book management and content platform

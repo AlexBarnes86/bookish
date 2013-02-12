@@ -5,8 +5,8 @@
 	<artifactId>bookish</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bookish Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>Bookish</name>
+	<url>https://github.com/AlexBarnes86/Bookish</url>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -101,4 +101,15 @@
 		</plugin>
 	</plugins>
 	</build>
+	<organization>
+		<name>ToastedBits</name>
+		<url>http://www.toastedbits.com/</url>
+	</organization>
+	<scm>
+		<url>https://github.com/AlexBarnes86/Bookish</url>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/AlexBarnes86/Bookish</url>
+	</issueManagement>
+	<description>Book content and management platform</description>
 </project>

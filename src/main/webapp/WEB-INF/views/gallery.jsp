@@ -7,7 +7,7 @@
 <div class="leftColumn">
 	<header id="bookishLogo" class="contentPaneLeft">
 		<div id="logo">
-			<img src="http://placekitten.com/300/100" alt="Bookish">
+			<img src="<spring:url value="/images/bookish_logo.png"/>" alt="Bookish">
 		</div>
 	</header>
 	
