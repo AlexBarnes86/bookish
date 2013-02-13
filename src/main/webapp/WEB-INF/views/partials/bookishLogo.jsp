@@ -2,6 +2,8 @@
 
 <header id="bookishLogo" class="contentPaneLeft">
 	<div id="logo">
-		<img src="<spring:url value="/images/bookish_logo.png"/>" alt="Bookish">
+		<a href="<spring:url value="/books"/>">
+			<img src="<spring:url value="/images/bookish_logo.png"/>" alt="Bookish">
+		</a>
 	</div>
 </header>

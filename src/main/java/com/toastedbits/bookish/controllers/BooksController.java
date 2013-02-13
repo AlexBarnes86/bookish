@@ -14,16 +14,17 @@ import com.toastedbits.bookish.models.Category;
 import com.toastedbits.bookish.services.BookService;
 
 @Controller
-@RequestMapping("/gallery")
-public class GalleryController {
+@RequestMapping("/books")
+public class BooksController {
 	@Autowired
 	private BookService bookService;
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public String get(ModelMap model, @RequestParam(value="selected", required=false) Integer id) {
+	public String get(ModelMap model, @RequestParam(value="selected", required=false) Long id) {
 		Map<Long, Book> books = bookService.getBooks(new Category());
 		model.put("books", books);
 		model.put("curBook", books.get(id));
+		model.put("newBook", new Book());
 		
 		return "gallery";
 	}
@@ -33,6 +34,8 @@ public class GalleryController {
 		bookService.insertSampleBook();
 		Map<Long, Book> books = bookService.getBooks(new Category());
 		model.put("books", books);
+		model.put("newBook", new Book());
+		
 		return "gallery";
 	}
 }

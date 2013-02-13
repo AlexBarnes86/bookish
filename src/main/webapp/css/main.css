@@ -1,58 +1,35 @@
 /* CSS for desktops */
 
 html, body {
-	min-height: 600px;
-	height: 100%;
-	min-width: 800px;
+	min-width: 1024px;
+	min-height: 768px;
 	width: 100%;
-	overflow: hidden;
+	height: 100%;
 	background-image: url('../images/paper_1_@2X.png');
 }
 
 #bookishLogo {
-	min-height: 115px;
-	height: 15%;
+	height: 135px;
 }
 
 #controlPane {
-	min-height: 75px;
-	height: 5%;
+	height: 75px;
 }
 
 #searchBar, #controlButtons {
 	float: right;
 }
 
-.contentPaneLeft {
-	height: 78%;
-	
-	-webkit-border-top-right-radius: 25px;
-	-webkit-border-bottom-right-radius: 25px;
-	-moz-border-radius-topright: 25px;
-	-moz-border-radius-bottomright: 25px;
-	border-top-right-radius: 25px;
-	border-bottom-right-radius: 25px;
+#bookGalleryPane {
+	height: 400px;
 }
 
 .contentPane {
-	height: 95%;
 	margin-left: 15px;
-	
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	border-radius: 25px;
 }
 
 .contentPaneRight {
 	margin-left: 15px;
-	height: 85%;
-	
-	-webkit-border-top-left-radius: 25px;
-	-webkit-border-bottom-left-radius: 25px;
-	-moz-border-radius-topleft: 25px;
-	-moz-border-radius-bottomleft: 25px;
-	border-top-left-radius: 25px;
-	border-bottom-left-radius: 25px;
 }
 
 .contentPaneLeft, .contentPane, .contentPaneRight {
@@ -61,33 +38,50 @@ html, body {
 	padding-top: 10px;
 	padding-left: 10px;
 	background-color: white;
-	
-	-webkit-box-shadow:  5px 5px 5px 5px rgba(0, 0, 0, .5);
-	box-shadow:  5px 5px 5px 5px rgba(0, 0, 0, .5);
+}
+
+.adminPanel {
+	background-color: #EFE;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	border: 1px solid green;
 }
 
 #bookSummary {
-	margin: 10px;
-	margin-right: 0px;
-	height: 90%;
+	margin: 0px 10px 10px 10px;
 	overflow-y: auto;
 }
 
 .galleryBook {
-	float:left;
-	border: 1px solid black;
+	float: left;
 	margin-left: 10px;
 	margin-top: 10px;
-	
-	-webkit-box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
-	box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
 }
 
 .galleryBook img {
 	width: 100px;
 	height: 150px;
+	border: 1px solid black;
+	-webkit-box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
+	box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
 }
 
 .selectedBook {
 	border: 3px solid yellow;
+}
+
+label {
+	width: 6em;
+	text-align: right;
+	float: left;
+	margin-right: 0.5em;
+}
+
+button {
+	min-width: 75px;
+}
+
+input, textarea {
+	width: 300px;
 }
