@@ -1,6 +1,13 @@
-package com.toastedbits.bookish.models;
+package com.toastedbits.bookish.domain;
 
+import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.Indexed;
+import org.springframework.data.neo4j.annotation.NodeEntity;
+
+@NodeEntity
 public class Book {
+	@GraphId
+	@Indexed
 	private Long id;
 	private String image;
 	private String title;

@@ -7,14 +7,10 @@
 		<c:forEach items="${books}" var="book">
 			<c:set var="book" value="${book.value}"/>
 			
-			<c:choose>
-				<c:when test="${curBook != null && curBook.id == book.id}">
-					<c:set var="bookClass" value="selectedBook"/>
-				</c:when>
-				<c:otherwise>
-					<c:set var="bookClass" value=""/>
-				</c:otherwise>
-			</c:choose>
+			<c:set var="bookClass" value=""/>
+			<c:if test="${curBook != null && curBook.id == book.id}">
+				<c:set var="bookClass" value="selectedBook"/>
+			</c:if>
 			
 			<div class="galleryBook">
 				<a href="<spring:url value="/books?selected=${book.id}"/>">
