@@ -6,6 +6,8 @@
 	<fieldset>
 		<legend>New Book</legend>
 		<form:label for="titleInput" path="title">Title</form:label><form:input id="titleInput" path="title"/><br>
+		<form:label for="categoryInput" path="category.name">Category</form:label><form:input id="categoryInput" path="category.name"/><br>
+		<form:label for="imageInput" path="image">Image</form:label><form:input id="imageInput" path="image"/><br>
 		<form:label for="summaryTextArea" path="summary">Summary</form:label><form:textarea id="summaryTextArea" path="summary"/>
 	</fieldset>
 	<form:button id="createButton">Create New Book</form:button>

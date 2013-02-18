@@ -17,12 +17,9 @@
 					<img class="${bookClass}" src="${book.image}" alt="${book.title}">
 				</a>
 				<div class="adminPanel">
-					<form action="<spring:url value="/book/${book.id}"/>" method="get">
-						<button>Edit</button>
-					</form>
 					<form action="<spring:url value="/book/${book.id}"/>" method="post">
 						<input type="hidden" name="_method" value="delete">
-						<button>Delete</button>
+						<input type="submit" value="Delete"/>
 					</form>
 				</div>
 			</div>

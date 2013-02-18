@@ -3,6 +3,7 @@ package com.toastedbits.bookish.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import com.toastedbits.bookish.domain.Book;
 import com.toastedbits.bookish.repositories.BookRepository;
@@ -13,11 +14,7 @@ public class BookService {
 	private BookRepository bookRepo;
 	
 	public Book getById(Long id) {
-		if(id == null) {
-			return null;
-		}
-		
-		return bookRepo.findOne(id);
+		return (id == null ? null : bookRepo.findOne(id));
 	}
 	
 	@Transactional
@@ -31,7 +28,9 @@ public class BookService {
 	
 	@Transactional
 	public Book createBook(Book book) {
-		book.setImage("http://placekitten.com/100/150");
+		if(StringUtils.isEmpty(book.getImage())) {
+			book.setImage("http://placekitten.com/100/150");
+		}
 		return bookRepo.save(book);
 	}
 

@@ -1,8 +1,10 @@
 package com.toastedbits.bookish.domain;
 
+import org.neo4j.graphdb.Direction;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
+import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
 public class Book {
@@ -13,6 +15,9 @@ public class Book {
 	private String title;
 	private String link;
 	private String summary;
+	
+	@RelatedTo(type="BELONGS_TO", direction=Direction.OUTGOING)
+	private Category category;
 	
 	public Long getId() {
 		return id;
@@ -43,5 +48,11 @@ public class Book {
 	}
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

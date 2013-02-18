@@ -2,7 +2,6 @@ package com.toastedbits.bookish.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +16,13 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
+	@Autowired
+	GalleryHelper helper;
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String get(ModelMap model, @PathVariable("id") Long id) {
 		model.put("book", bookService.getById(id));
-		
+		helper.setModelAttributes(model);
 		return "book";
 	}
 	
@@ -31,9 +33,10 @@ public class BookController {
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/{id}")
-	public String putPost(ModelMap model, @PathVariable("id") Long id, Book book) {
+	public String put(ModelMap model, @PathVariable("id") Long id, Book book) {
 		bookService.updateById(id, book);
 		model.put("book", book);
+		helper.setModelAttributes(model);
 		return "book";
 	}
 }
