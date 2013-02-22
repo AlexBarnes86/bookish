@@ -7,7 +7,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
-public class Book {
+public class Book implements Viewable {
 	@GraphId
 	@Indexed
 	private Long id;

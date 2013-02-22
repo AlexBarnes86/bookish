@@ -23,7 +23,12 @@ public class CategoryController {
 		cat.setName(name);
 		cat.setParent(catService.getById(parent));
 		catService.createCategory(cat);
-		return "redirect:/books";
+		if(parent != null) {
+			return "redirect:/books?category=" + parent;
+		}
+		else {
+			return "redirect:/books";
+		}
 	}
 	
 	@RequestMapping(value="{id}", method=RequestMethod.DELETE)

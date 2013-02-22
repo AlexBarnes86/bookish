@@ -49,4 +49,6 @@
 
 	<!--<tx:annotation-driven mode="aspectj" transaction-manager="neo4jTransactionManager"/>-->
 	<tx:annotation-driven mode="proxy"/>
+	
+	<bean id="dbInit" class="com.toastedbits.bookish.background.InitDB" init-method="start" lazy-init="false"/>
 </beans>

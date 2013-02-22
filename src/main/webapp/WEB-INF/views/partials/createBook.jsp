@@ -2,11 +2,24 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<form:form method="post" commandName="newBook">
+<form:form action="/books" method="post" commandName="newBook">
 	<fieldset>
 		<legend>New Book</legend>
 		<form:label for="titleInput" path="title">Title</form:label><form:input id="titleInput" path="title"/><br>
-		<form:label for="categoryInput" path="category.name">Category</form:label><form:input id="categoryInput" path="category.name"/><br>
+		<c:choose>
+			<c:when test="${categoryTree == null}">
+				<form:hidden path="category.id" value="${categoryRoot.id}"/>
+			</c:when>
+			<c:when test="${categoryTree.children == null || categoryTree.children.size() == 0}">
+				<form:hidden path="category.id" value="${categoryTree.id}"/>
+			</c:when>
+			<c:otherwise>
+				<form:label for="categoryInput" path="category.id">Category</form:label>
+				<form:select id="categoryInput" path="category.id">
+					<form:options items="${categoryTree.children}" itemLabel="name" itemValue="id"/>
+				</form:select><br>
+			</c:otherwise>
+		</c:choose>
 		<form:label for="imageInput" path="image">Image</form:label><form:input id="imageInput" path="image"/><br>
 		<form:label for="summaryTextArea" path="summary">Summary</form:label><form:textarea id="summaryTextArea" path="summary"/>
 	</fieldset>

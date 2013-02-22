@@ -1,4 +1,4 @@
-package com.toastedbits.bookish.launch;
+package com.toastedbits.bookish.launcher;
 
 import org.apache.catalina.core.AprLifecycleListener;
 import org.apache.catalina.core.StandardServer;

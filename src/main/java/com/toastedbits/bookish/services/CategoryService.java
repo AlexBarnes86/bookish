@@ -1,7 +1,5 @@
 package com.toastedbits.bookish.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,12 +12,31 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository catRepo;
 	
-	public void createCategory(Category cat) {
-		catRepo.save(cat);
+	public static final String ROOT_NAME = "CategoryRoot";
+	
+	public void createCategoryRoot() {
+		Category cat = getByName(ROOT_NAME);
+		if(cat == null) {
+			cat = new Category();
+			cat.setName(ROOT_NAME);
+			catRepo.save(cat);
+		}
 	}
-
-	public List<Category> getAllCategories() {
-		return catRepo.findAll().as(List.class);
+	
+	public Category getCategoryRoot() {
+		return catRepo.findByPropertyValue("name", ROOT_NAME);
+	}
+	
+	public void createCategory(Category cat) {
+		if(cat.getParent() == null) {
+			Category root = getCategoryRoot();
+			if(root == null) {
+				throw new IllegalStateException("Missing Category Root");
+			}
+			cat.setParent(root);
+		}
+		
+		catRepo.save(cat);
 	}
 	
 	public Category getByName(String name) {
@@ -30,8 +47,17 @@ public class CategoryService {
 	public void deleteById(Long id) {
 		catRepo.delete(id);
 	}
-
+	
 	public Category getById(Long id) {
 		return (id == null ? null : catRepo.findOne(id));
+	}
+	
+	public Category getCategoryTree(Long rootId) {
+		if(rootId != null) {
+			return catRepo.findOne(rootId);
+		}
+		else {
+			return getCategoryRoot();
+		}
 	}
 }
