@@ -1,4 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<c:if test="${cssLayout == null}">
+	<spring:url var="cssLayout" value="/css/threecolumn.css"/>
+</c:if>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>	  <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>		 <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -14,7 +20,7 @@
 		<%--TODO: Place favicon.ico and apple-touch-icon.png in the root directory --%>
 		
 		<link rel="stylesheet" href="<spring:url value="/css/normalize.2.1.0.css"/>">
-		<link rel="stylesheet" href="<spring:url value="/css/threecolumn.css"/>">
+		<link rel="stylesheet" href="${cssLayout}">
 		<link rel="stylesheet" href="<spring:url value="/css/main.css"/>">
 		<%--Use http://modernizr.com/downloads/modernizr-latest.js for debugging --%>
 		<script src="<spring:url value="/js/vendor/modernizr-2.6.2.min.js"/>"></script>

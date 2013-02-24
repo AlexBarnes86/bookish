@@ -21,7 +21,8 @@
 			</c:otherwise>
 		</c:choose>
 		<form:label for="imageInput" path="image">Image</form:label><form:input id="imageInput" path="image"/><br>
-		<form:label for="summaryTextArea" path="summary">Summary</form:label><form:textarea id="summaryTextArea" path="summary"/>
+		<form:label for="summaryTextArea" path="summary">Summary</form:label><form:textarea id="summaryTextArea" path="summary"/><br>
+		<form:label for="contentTextArea" path="content">Content</form:label><form:textarea id="contentTextArea" path="content"/>
 	</fieldset>
 	<form:button id="createButton">Create New Book</form:button>
 </form:form>

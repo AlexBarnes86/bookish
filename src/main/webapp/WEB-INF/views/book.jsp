@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="templateLeftColumn" scope="request" value="/WEB-INF/views/gallery/leftColumn.jsp"/>
-<c:set var="templateMiddleColumn" scope="request" value="/WEB-INF/views/partials/book.jsp"/>
-<c:set var="templateRightColumn" scope="request" value="/WEB-INF/views/gallery/rightColumn.jsp"/>
+<c:set var="templateLeftColumn" scope="request" value="/WEB-INF/views/book/leftColumn.jsp"/>
+<c:set var="templateRightColumn" scope="request" value="/WEB-INF/views/book/rightColumn.jsp"/>
 
-<jsp:include page="/WEB-INF/views/templates/threecolumn.jsp"/>
+<jsp:include page="/WEB-INF/views/templates/twocolumn.jsp"/>

@@ -11,7 +11,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
-public class Category implements Viewable {
+public class Category {
 	public Category() {}
 	
 	public Category(Category c) {
@@ -26,10 +26,10 @@ public class Category implements Viewable {
 	@Indexed(unique=true)
 	private String name;
 	
-	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.OUTGOING)
+	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.OUTGOING, elementClass=Category.class, enforceTargetType=true)
 	@Fetch private Category parent;
 	
-	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.INCOMING)
+	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.INCOMING, elementClass=Category.class, enforceTargetType=true)
 	@Fetch private Set<Category> children = new HashSet<Category>();
 	
 	public Long getId() {

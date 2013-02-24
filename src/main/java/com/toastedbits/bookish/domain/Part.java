@@ -9,20 +9,14 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
-public class Book {
+public class Part {
 	@GraphId
 	@Indexed
 	private Long id;
-	private String image;
 	private String title;
+	private int number;
 	private String summary;
 	private String content;
-	
-	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.OUTGOING)
-	private Category category;
-	
-	@RelatedTo(type=RelTypes.HAS, direction=Direction.OUTGOING)
-	private Set<Part> parts;
 	
 	@RelatedTo(type=RelTypes.HAS, direction=Direction.OUTGOING)
 	private Set<Chapter> chapters;
@@ -33,23 +27,23 @@ public class Book {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getSummary() {
-		return summary;
+	public int getNumber() {
+		return number;
 	}
-	public void setSummary(String summary) {
-		this.summary = summary;
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	public Set<Chapter> getChapters() {
+		return chapters;
+	}
+	public void setChapters(Set<Chapter> chapters) {
+		this.chapters = chapters;
 	}
 	public String getContent() {
 		return content;
@@ -57,22 +51,10 @@ public class Book {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Category getCategory() {
-		return category;
+	public String getSummary() {
+		return summary;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-	public Set<Part> getParts() {
-		return parts;
-	}
-	public void setParts(Set<Part> parts) {
-		this.parts = parts;
-	}
-	public Set<Chapter> getChapters() {
-		return chapters;
-	}
-	public void setChapters(Set<Chapter> chapters) {
-		this.chapters = chapters;
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 }

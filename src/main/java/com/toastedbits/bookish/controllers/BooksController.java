@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.toastedbits.bookish.domain.Book;
+import com.toastedbits.bookish.domain.Category;
 import com.toastedbits.bookish.domain.User;
 import com.toastedbits.bookish.services.BookService;
 import com.toastedbits.bookish.services.CategoryService;
@@ -46,12 +47,7 @@ public class BooksController {
 	public String post(ModelMap model, Book book) {
 		User admin = userService.getAdminUser(); //TODO: add proper user control
 		
-		if(book.getCategory() != null) {
-			book.setCategory(categoryService.getById(book.getCategory().getId()));
-		}
-		if(book.getCategory() == null) {
-			book.setCategory(categoryService.getCategoryRoot());
-		}
+		book.setCategory(categoryService.fetch(book));
 		bookService.createBook(book);
 		model.put("curBook", book);
 		helper.setModelAttributes(model);

@@ -1,0 +1,15 @@
+.leftColumn {
+	float: left;
+	min-height: 100%;
+	height: 100%;
+	width: 25%;
+	/*background-color: red;*/
+}
+
+.rightColumn {
+	float: right;
+	min-height: 100%;
+	height: 100%;
+	width: 75%;
+	/*background-color: blue;*/
+}

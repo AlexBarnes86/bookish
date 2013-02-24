@@ -7,11 +7,15 @@ import org.springframework.util.StringUtils;
 
 import com.toastedbits.bookish.domain.Book;
 import com.toastedbits.bookish.repositories.BookRepository;
+import com.toastedbits.bookish.repositories.CategoryRepository;
 
 @Service
 public class BookService {
 	@Autowired
 	private BookRepository bookRepo;
+	
+	@Autowired
+	private CategoryRepository catRepo;
 	
 	public Book getById(Long id) {
 		return (id == null ? null : bookRepo.findOne(id));
@@ -31,14 +35,12 @@ public class BookService {
 		if(StringUtils.isEmpty(book.getImage())) {
 			book.setImage("http://placekitten.com/100/150");
 		}
+		book.getCategory().setChildren(null);
 		return bookRepo.save(book);
 	}
 
 	@Transactional
 	public void updateById(Long id, Book book) {
-		Book upBook = bookRepo.findOne(id);
-		upBook.setTitle(book.getTitle());
-		upBook.setSummary(book.getSummary());
-		bookRepo.save(upBook);
+		bookRepo.save(book);
 	}
 }
