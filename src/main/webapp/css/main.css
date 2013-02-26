@@ -99,10 +99,16 @@ input, textarea {
 }
 
 #bookCategoriesPane .adminPanel {
-	padding: 0;
+	padding: 2px;
 	margin: 0;
+}
+
+#bookCategoriesPane .adminPanel input[type="submit"] {
 	float:right;
-	height: 1.5em;
+}
+
+#bookCategoriesPane .adminPanel input[type="text"] {
+	width: 12em;
 }
 
 #bookCategoriesPane li {

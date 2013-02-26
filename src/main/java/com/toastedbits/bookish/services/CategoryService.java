@@ -26,6 +26,7 @@ public class CategoryService {
 	
 	public static final String ROOT_NAME = "CategoryRoot";
 	
+	@Transactional
 	public void createCategoryRoot() {
 		Category cat = getByName(ROOT_NAME);
 		if(cat == null) {
@@ -39,6 +40,7 @@ public class CategoryService {
 		return catRepo.findByPropertyValue("name", ROOT_NAME);
 	}
 	
+	@Transactional
 	public void createCategory(Category cat) {
 		if(cat.getParent() == null) {
 			Category root = getCategoryRoot();
@@ -94,7 +96,7 @@ public class CategoryService {
 		}
 		return categories;
 	}
-
+	
 	public Category fetch(final Book book) {
 		Category category = book.getCategory();
 		if(category == null || category.getId() == null) {

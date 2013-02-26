@@ -17,8 +17,8 @@
 		<meta name="description" content="Book management and viewing platform">
 		<meta name="viewport" content="width=device-width">
 		
-		<%--TODO: Place favicon.ico and apple-touch-icon.png in the root directory --%>
-		
+		<%--TODO: add apple-touch-icon.png --%>
+		<link rel="icon" href="<spring:url value="/favicon.ico"/>" type="image/x-icon" />
 		<link rel="stylesheet" href="<spring:url value="/css/normalize.2.1.0.css"/>">
 		<link rel="stylesheet" href="${cssLayout}">
 		<link rel="stylesheet" href="<spring:url value="/css/main.css"/>">

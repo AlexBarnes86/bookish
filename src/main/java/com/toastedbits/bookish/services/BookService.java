@@ -40,7 +40,7 @@ public class BookService {
 	}
 
 	@Transactional
-	public void updateById(Long id, Book book) {
+	public void save(Book book) {
 		bookRepo.save(book);
 	}
 }

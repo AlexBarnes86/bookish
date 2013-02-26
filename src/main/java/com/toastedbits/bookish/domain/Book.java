@@ -1,5 +1,10 @@
 package com.toastedbits.bookish.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.neo4j.graphdb.Direction;
@@ -9,7 +14,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
 @NodeEntity
-public class Book {
+public class Book implements TreeView {
 	@GraphId
 	@Indexed
 	private Long id;
@@ -21,11 +26,8 @@ public class Book {
 	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.OUTGOING)
 	private Category category;
 	
-	@RelatedTo(type=RelTypes.HAS, direction=Direction.OUTGOING)
+	@RelatedTo(type=RelTypes.HAS_PART, direction=Direction.OUTGOING, elementClass=Part.class, enforceTargetType=true)
 	private Set<Part> parts;
-	
-	@RelatedTo(type=RelTypes.HAS, direction=Direction.OUTGOING)
-	private Set<Chapter> chapters;
 	
 	public Long getId() {
 		return id;
@@ -69,10 +71,24 @@ public class Book {
 	public void setParts(Set<Part> parts) {
 		this.parts = parts;
 	}
-	public Set<Chapter> getChapters() {
-		return chapters;
+	public int getDisplayPriority() {
+		return -1;
 	}
-	public void setChapters(Set<Chapter> chapters) {
-		this.chapters = chapters;
+	public String getDisplayValue() {
+		return title;
+	}
+	public Set<TreeView> getChildren() {
+		List<TreeView> children = new ArrayList<TreeView>();
+		for(Part part : parts) {
+			children.add(part);
+		}
+		Collections.sort(children, new Comparator<TreeView>() {
+			@Override
+			public int compare(TreeView lhs, TreeView rhs) {
+				return rhs.getDisplayPriority() - lhs.getDisplayPriority();
+			}
+		});
+		
+		return new LinkedHashSet<TreeView>(children);
 	}
 }

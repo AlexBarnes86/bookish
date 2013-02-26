@@ -13,23 +13,21 @@ import com.toastedbits.bookish.services.BookService;
 import com.toastedbits.bookish.services.PartService;
 
 @Controller
-@RequestMapping("/book/{bookId}/part/{id}")
-public class BookPartController {
+@RequestMapping("/book/{bookId}/parts")
+public class BookPartsController {
 	@Autowired
-	BookService bookService;
+	private BookService bookService;
 	
 	@Autowired
-	PartService partService;
+	private PartService partService;
 	
-	@RequestMapping(method=RequestMethod.DELETE)
-	public String delete(@PathVariable("bookId") Long bookId, @PathVariable("id") Long id) {
+	@RequestMapping(method=RequestMethod.POST)
+	public String post(@PathVariable("bookId") Long bookId, Part part) {
 		Book book = bookService.getById(bookId);
-		Part part = partService.getById(id);
-		if(book == null || part == null) {
+		if(book == null) {
 			throw new ResourceNotFoundException();
 		}
-		
-		partService.delete(id);
+		partService.createPart(book, part);
 		return "redirect:/book/" + bookId;
 	}
 }

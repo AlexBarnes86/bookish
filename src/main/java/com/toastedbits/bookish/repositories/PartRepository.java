@@ -3,7 +3,7 @@ package com.toastedbits.bookish.repositories;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
 
-import com.toastedbits.bookish.domain.Category;
+import com.toastedbits.bookish.domain.Part;
 
 @Repository
-public interface CategoryRepository extends GraphRepository<Category> {}
+public interface PartRepository extends GraphRepository<Part> {}

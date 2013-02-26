@@ -6,11 +6,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.toastedbits.bookish.domain.Book;
-import com.toastedbits.bookish.domain.Category;
 import com.toastedbits.bookish.exceptions.ResourceNotFoundException;
 import com.toastedbits.bookish.services.BookService;
 import com.toastedbits.bookish.services.CategoryService;
@@ -30,8 +28,10 @@ public class BookController {
 		if(book == null) {
 			throw new ResourceNotFoundException();
 		}
+		
 		model.put("book", book);
 		model.put("categories", catService.getAll());
+		
 		return "book";
 	}
 	
@@ -51,7 +51,8 @@ public class BookController {
 		}
 		
 		book.setCategory(catService.fetch(book));
-		bookService.updateById(id, book);
+		book.setId(id);
+		bookService.save(book);
 		return "redirect:/book/" + id;
 	}
 	
