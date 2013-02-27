@@ -1,8 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page import="com.toastedbits.bookish.domain.Category" %>
-<%@ page import="java.io.IOException" %>
-<%@ page import="javax.servlet.http.HttpServletRequest" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div id="bookCategoriesPane" class="contentPaneLeft">
 	<c:choose>
@@ -16,12 +14,15 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<div class="adminPanel">
-		<form action="<spring:url value="/category?parent=${categoryTree.id}"/>" method="post">
-			<input type="text" name="name"><input type="submit" value="+">
-		</form>
-	</div>
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<div class="adminPanel">
+			<form action="<spring:url value="/category?parent=${categoryTree.id}"/>" method="post">
+				<input type="text" name="name"><input type="submit" value="+">
+			</form>
+		</div>
+	</sec:authorize>
 	
+	<%-- TODO: Refactor to use treeView --%>
 	<c:choose>
 		<c:when test="${categoryTree != null && categoryTree.children != null && categoryTree.getChildren().size() > 0}">
 			<ul>

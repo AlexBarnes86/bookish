@@ -16,7 +16,19 @@ html, body {
 	height: 75px;
 }
 
-#searchBar, #controlButtons {
+#searchTextField {
+	width: 8em;
+}
+
+#searchForm {
+	float: right;
+}
+
+#controlButtons {
+	clear: both;
+}
+
+#controlButtons form {
 	float: right;
 }
 
@@ -76,7 +88,7 @@ label {
 }
 
 input[type="submit"] {
-	width: 4em;
+	width: 5em;
 }
 
 input, textarea {

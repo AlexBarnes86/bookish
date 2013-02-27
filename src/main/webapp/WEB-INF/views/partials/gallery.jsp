@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div id="bookGalleryPane" class="contentPane">
 	<c:if test="${books != null}">
@@ -16,12 +17,14 @@
 				<a href="<spring:url value="/books?selected=${book.id}"/>">
 					<img class="${bookClass}" src="${book.image}" alt="${book.title}">
 				</a>
-				<div class="adminPanel">
-					<form action="<spring:url value="/book/${book.id}"/>" method="post">
-						<input type="hidden" name="_method" value="delete">
-						<input type="submit" value="Delete"/>
-					</form>
-				</div>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<div class="adminPanel">
+						<form action="<spring:url value="/book/${book.id}"/>" method="post">
+							<input type="hidden" name="_method" value="delete">
+							<input type="submit" value="Delete"/>
+						</form>
+					</div>
+				</sec:authorize>
 			</div>
 		</c:forEach>
 	</c:if>
