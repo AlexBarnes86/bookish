@@ -4,11 +4,8 @@
 
 <div class="contentPane">
 	<%--Use iframes to isolate the content away from the site so we don't screw up the site layout, etc --%>
-	<c:if test="${book.summary != null && !book.summary.isEmpty()}">
-		<iframe seamless="seamless" src="<spring:url value="/book/${book.id}/summary"/>"></iframe><br>
-	</c:if>
 	<c:if test="${book.content != null && !book.content.isEmpty()}">
-		<iframe seamless="seamless" src="<spring:url value="/book/${book.id}/content"/>"></iframe>
+		<iframe id="bookFrame" src="<spring:url value="/book/${book.id}/content"/>"></iframe>
 	</c:if>
 </div>
 

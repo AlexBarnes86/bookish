@@ -35,8 +35,7 @@ html, body {
 .contentPaneLeft, .contentPane, .contentPaneRight {
 	border: 1px solid black;
 	margin-top: 10px;
-	padding-top: 10px;
-	padding-left: 10px;
+	padding: 10px;
 	background-color: white;
 }
 
@@ -113,4 +112,12 @@ input, textarea {
 
 #bookCategoriesPane li {
 	clear: both;
+}
+
+#bookFrame {
+	width: 100%;
+	min-height: 400px;
+	border: 0px;
+	margin: none;
+	padding: 0px;
 }

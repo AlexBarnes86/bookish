@@ -16,6 +16,7 @@
 		<title>Bookish</title>
 		<meta name="description" content="Book management and viewing platform">
 		<meta name="viewport" content="width=device-width">
+		<base href="<spring:url value="/"/>"/>
 		
 		<%--TODO: add apple-touch-icon.png --%>
 		<link rel="icon" href="<spring:url value="/favicon.ico"/>" type="image/x-icon" />

@@ -2,9 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div id="bookCategoriesPane" class="contentPaneLeft">
+	<h3>${book.title}</h3>
 	<div class="adminPanel">
 		<form action="<spring:url value="/book/${book.id}/parts"/>" method="post">
-			<label for="newPartTextField">Part</label>
 			<input id="newPartTextField" name="title" type="text"></input>
 			<input type="submit" value="+"></input>
 		</form>

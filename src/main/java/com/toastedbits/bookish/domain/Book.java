@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.neo4j.graphdb.Direction;
+import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
@@ -27,7 +28,7 @@ public class Book implements TreeView {
 	private Category category;
 	
 	@RelatedTo(type=RelTypes.HAS_PART, direction=Direction.OUTGOING, elementClass=Part.class, enforceTargetType=true)
-	private Set<Part> parts;
+	@Fetch private Set<Part> parts;
 	
 	public Long getId() {
 		return id;
