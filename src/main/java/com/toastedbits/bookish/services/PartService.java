@@ -33,4 +33,17 @@ public class PartService {
 	public Part getById(Long id) {
 		return partRepo.findOne(id);
 	}
+
+	public void save(Long id, Part part) {
+		Part p = partRepo.findOne(id);
+		
+		if(part.getContent() != null) {
+			p.setContent(part.getContent());
+		}
+		if(part.getSummary() != null) {
+			p.setSummary(part.getSummary());
+		}
+		
+		partRepo.save(p);
+	}
 }

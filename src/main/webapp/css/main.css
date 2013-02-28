@@ -8,6 +8,10 @@ html, body {
 	background-image: url('../images/paper_1_@2X.png');
 }
 
+ul {
+	list-style-type: none;
+}
+
 #bookishLogo {
 	height: 135px;
 }
@@ -114,7 +118,7 @@ input, textarea {
 	margin: 0;
 }
 
-#bookCategoriesPane .adminPanel input[type="submit"] {
+#bookCategoriesPane .adminPanel {
 	float:right;
 }
 
