@@ -16,8 +16,8 @@
 			<fieldset>
 				<legend>Edit Part</legend>
 				<form:label path="title">Title</form:label><form:input path="title"/><br>
-				<form:label path="summary">Summary</form:label><form:textarea path="summary"/><br>
-				<form:label path="content">Content</form:label><form:textarea path="content"/>
+				<form:label path="summary">Summary</form:label><form:textarea cssClass="tinymce" path="summary"/><br>
+				<form:label path="content">Content</form:label><form:textarea cssClass="tinymce" path="content"/>
 			</fieldset>
 			<input type="submit" value="Update"/>
 		</form:form>

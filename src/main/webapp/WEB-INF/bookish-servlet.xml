@@ -18,6 +18,7 @@
 		<property name="maxUploadSize" value="100000"/>
 	</bean>
 	-->
+	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
