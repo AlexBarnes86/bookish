@@ -42,15 +42,18 @@ public class CategoryService {
 	
 	@Transactional
 	public void createCategory(Category cat) {
-		if(cat.getParent() == null) {
-			Category root = getCategoryRoot();
-			if(root == null) {
+		Category parent = cat.getParent();
+		if(parent == null) {
+			parent = getCategoryRoot();
+			if(parent == null) {
 				throw new IllegalStateException("Missing Category Root");
 			}
-			cat.setParent(root);
+			cat.setParent(parent);
 		}
 		
 		catRepo.save(cat);
+		parent.getChildren().add(cat);
+		catRepo.save(parent);
 	}
 	
 	public Category getByName(String name) {
@@ -82,7 +85,7 @@ public class CategoryService {
 				.evaluator(Evaluators.fromDepth(1))
 				.expand(Traversal
 					.expanderForTypes(DynamicRelationshipType
-					.withName(RelTypes.BELONGS_TO), 
+					.withName(RelTypes.PARENT_CATEGORY), 
 							  Direction.INCOMING).addNodeFilter(new Predicate<Node>() {
 									@Override
 									public boolean accept(Node item) {

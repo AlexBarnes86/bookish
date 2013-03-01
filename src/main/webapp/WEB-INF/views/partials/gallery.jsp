@@ -14,7 +14,7 @@
 			</c:if>
 			
 			<div class="galleryBook">
-				<a href="<spring:url value="/books?selected=${book.id}"/>">
+				<a href="<spring:url value="/books?category=${book.category.id}&selected=${book.id}"/>">
 					<img class="${bookClass}" src="${book.image}" alt="${book.title}">
 				</a>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">

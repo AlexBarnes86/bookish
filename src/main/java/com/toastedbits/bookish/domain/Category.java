@@ -26,10 +26,10 @@ public class Category {
 	@Indexed(unique=true)
 	private String name;
 	
-	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.OUTGOING, elementClass=Category.class, enforceTargetType=true)
+	@RelatedTo(type=RelTypes.PARENT_CATEGORY, direction=Direction.OUTGOING)
 	@Fetch private Category parent;
 	
-	@RelatedTo(type=RelTypes.BELONGS_TO, direction=Direction.INCOMING, elementClass=Category.class, enforceTargetType=true)
+	@RelatedTo(type=RelTypes.CHILD_CATEGORY, direction=Direction.INCOMING)
 	@Fetch private Set<Category> children = new HashSet<Category>();
 	
 	public Long getId() {

@@ -3,7 +3,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div id="bookCategoriesPane" class="contentPaneLeft">
-	<h3>${book.title}</h3>
+	<h3><a href="<spring:url value="/book/${book.id}"/>">${book.title}</a></h3>
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<div class="adminPanel">
 			<form action="<spring:url value="/book/${book.id}/parts"/>" method="post">

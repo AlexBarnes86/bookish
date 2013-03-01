@@ -28,6 +28,6 @@ public class BookPartsController {
 			throw new ResourceNotFoundException();
 		}
 		partService.createPart(book, part);
-		return "redirect:/book/" + bookId;
+		return "redirect:/book/" + bookId + "/part/" + part.getId();
 	}
 }
