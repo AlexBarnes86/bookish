@@ -5,10 +5,12 @@
 *.war
 *.ear
 
-.classpath
-.settings
-.project
-target
 *~
 .swp
+
+.classpath
+.project
+.settings/
+target/
 bin/
+.gradle/

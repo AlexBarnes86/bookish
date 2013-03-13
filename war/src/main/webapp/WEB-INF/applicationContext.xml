@@ -33,11 +33,12 @@
 	<context:property-placeholder location="classpath:bookish.properties"/>
 	
 	<!-- Simple embedded only neo4j access -->
-	<!--<neo4j:config storeDirectory="${graphdb.location}"/>-->
+	<neo4j:config storeDirectory="${graphdb.location}"/>
 	
 	<!-- Start: Embedded + Server neo4j access -->
 	<neo4j:repositories base-package="com.toastedbits.bookish.repositories"/>
-
+	
+	<!--
 	<bean id="graphDatabaseService" class="org.neo4j.kernel.EmbeddedGraphDatabase" destroy-method="shutdown">
 		<constructor-arg index="0" value="${graphdb.location}" />
 		<constructor-arg index="1">
@@ -48,6 +49,7 @@
 	<bean id="serverWrapper" class="org.neo4j.server.WrappingNeoServerBootstrapper" init-method="start" destroy-method="stop">
 		<constructor-arg ref="graphDatabaseService"/>
 	</bean>
+	-->
 	
 	<neo4j:config graphDatabaseService="graphDatabaseService"/>
 	<!-- End: Embedded + Server -->
