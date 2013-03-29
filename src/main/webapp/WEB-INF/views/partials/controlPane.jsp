@@ -23,7 +23,7 @@
 			<input type="submit" value="Help"/>
 		</form>
 		--%>
-		<sec:authorize access="hasRole('ROLE_USER')">
+		<sec:authorize access="isAuthenticated()">
 			<form action="<spring:url value="/j_spring_security_logout"/>">
 				<input type="submit" value="Log Out"/>
 			</form>

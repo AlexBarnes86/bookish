@@ -12,4 +12,5 @@ public interface RelTypes {
 	public static final String SECTION_OF = "SECTION_OF";
 	public static final String PARENT_CATEGORY = "PARENT_CATEGORY";
 	public static final String CHILD_CATEGORY = "CHILD_CATEGORY";
+	public static final String HAS_AUTHORITY = "HAS_AUTHORITY";
 }
