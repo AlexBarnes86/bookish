@@ -33,10 +33,6 @@ repositories {
 configurations {
 	runtime
 	testCompile
-	
-	// From Spring Data Neo4j ///////////////////////////////////////////////////////////////
-	ajtools
-	aspectpath
 }
 
 configurations.all {
@@ -69,63 +65,15 @@ dependencies {
 	compile "org.springframework:spring-webmvc:${springVersion}"
 	compile "org.webjars:jquery:1.9.1"
 	compile "org.webjars:tinymce-jquery:3.4.9"
-	
+	compile "org.springframework.data:spring-data-neo4j:$springDataGraphVersion"
+	compile "org.aspectj:aspectjrt:$aspectjVersion"
+
 	//	compile "org.neo4j.app:neo4j-server:1.8.1"
 	//	compile "org.neo4j.app:neo4j-server:1.8.1:static-web"
 	
 	testCompile "org.springframework:spring-test:3.2.1.RELEASE"
 	testCompile "junit:junit:4.11"
-	
-	// From Spring Data Neo4j //////////////////////////////////////////////////////////////////////////////////////
-	compile group: "org.springframework.data", name: "spring-data-neo4j", version: springDataGraphVersion
-	testCompile group:"org.springframework", name: "spring-test", version: springVersion
-	ajtools "org.aspectj:aspectjtools:$aspectjVersion"
-	compile "org.aspectj:aspectjrt:$aspectjVersion"
-	aspectpath group: "org.springframework.data", name: "spring-data-neo4j", version: springDataGraphVersion
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Include Spring Data Neo4j. 
-// Adapted from: https://github.com/SpringSource/spring-data-neo4j/blob/master/build/gradle/springdataneo4j.gradle
-task compileJava(overwrite: true, description: 'Compiles AspectJ Source', type: Ajc) {
-	dependsOn processResources
-	sourceSet = sourceSets.main
-	inputs.files(sourceSet.java.srcDirs)
-	outputs.dir(sourceSet.output.classesDir)
-	aspectPath = configurations.aspectpath
-}
-
-task compileTestJava(overwrite: true, description: 'Compiles AspectJ Test Source', type: Ajc) {
-	dependsOn processTestResources, compileJava, jar
-	sourceSet = sourceSets.test
-	inputs.files(sourceSet.java.srcDirs)
-	outputs.dir(sourceSet.output.classesDir)
-	aspectPath = files(configurations.aspectpath, jar.archivePath)
-}
-
-class Ajc extends DefaultTask {
-	Ajc() {
-		logging.captureStandardOutput(LogLevel.INFO)
-	}
-
-	@TaskAction
-	def compile() {
-		logger.info "Running ajc ..."
-
-		ant.taskdef(resource: "org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: project.configurations.ajtools.asPath)
-		ant.iajc(classpath: sourceSet.compileClasspath.asPath, fork: 'true', destDir: sourceSet.classesDir.absolutePath,
-				source: project.sourceCompatibility,
-				target: project.targetCompatibility,
-				aspectPath: aspectPath.asPath, sourceRootCopyFilter: '**/*.java', showWeaveInfo: 'true', Xlint: "ignore") {
-			sourceroots {
-				sourceSet.java.srcDirs.each {
-					pathelement(location: it.absolutePath)
-				}
-			}
-		}
-	}
-}
-////////////////////////
 
 eclipse {
 	wtp {
@@ -134,4 +82,8 @@ eclipse {
 			deployName = 'bookish'
 		}
 	}
+}
+
+war {
+	archiveName = "bookish.war"
 }
