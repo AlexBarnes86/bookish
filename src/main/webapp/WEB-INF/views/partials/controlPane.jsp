@@ -18,25 +18,23 @@
 	</div>
 	--%>
 	<div id="controlButtons">
-		<%-- TODO: Implement help pages
-		<form action="/help" method="get">
-			<input type="submit" value="Help"/>
-		</form>
-		--%>
-		<sec:authorize access="isAuthenticated()">
-			<form action="<spring:url value="/j_spring_security_logout"/>">
-				<input type="submit" value="Log Out"/>
-			</form>
+		<a href="<spring:url value="/about"/>">About</a>
+		
+		<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<a href="<spring:url value="/users"/>">User Administration</a>
 		</sec:authorize>
+		
+		<sec:authorize access="isAuthenticated()">
+			<a href="<spring:url value="/j_spring_security_logout"/>">Log Out</a>
+		</sec:authorize>
+		
 		<sec:authorize access="isAnonymous()">
 			<%-- TODO: Implement signup
 			<form action="<spring:url value="/signup"/>">
 				<input type="submit" value="Sign Up"/>
 			</form>
 			--%>
-			<form action="<spring:url value="/spring_security_login"/>">
-				<input type="submit" value="Log In"/>
-			</form>
+			<a href="<spring:url value="/spring_security_login"/>">Log In</a>
 		</sec:authorize>
 	</div>
 </div>
