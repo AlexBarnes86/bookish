@@ -26,5 +26,4 @@ public class AuthorityService {
 			authRepo.save(auth);
 		}
 	}
-
 }

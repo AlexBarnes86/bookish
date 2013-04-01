@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.toastedbits.bookish.domain.PlatformDetails;
 import com.toastedbits.bookish.exceptions.UsernameAlreadyExistsException;
 import com.toastedbits.bookish.services.AuthorityService;
 import com.toastedbits.bookish.services.CategoryService;
@@ -28,12 +27,18 @@ public class InitDB {
 	
 	public void start() throws UsernameAlreadyExistsException {
 		LOG.debug("Loading bookish platform");
-		PlatformDetails details = platform.getPlatformDetails();
-		if(details.isFirstTimeSetup()) {
+		if(platform.isFirstTimeSetup()) {
 			LOG.debug("First Time Setup enabled");
 			catService.createCategoryRoot();
 			authService.addAuthority("ROLE_ADMIN");
-			userService.createAdminUser("admin", "admin");
+			try {
+				userService.createAdminUser("admin", "admin");
+			}
+			catch(UsernameAlreadyExistsException e) {
+				LOG.debug("Admin user already exists");
+			}
+			
+			platform.setFirstTimeSetup(false);
 		}
 	}
 }

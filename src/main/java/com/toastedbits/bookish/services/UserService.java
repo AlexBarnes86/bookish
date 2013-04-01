@@ -1,6 +1,7 @@
 package com.toastedbits.bookish.services;
 
 import java.util.HashSet;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.dao.SaltSource;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -55,7 +57,6 @@ public class UserService {
 			bookishUser.setPassword(passwordEncoder.encodePassword(password, saltSource.getSalt(user)));
 			
 			userRepo.save(bookishUser);
-			LOG.debug("Hashed password: " + userRepo.findByPropertyValue("username", username).getPassword());
 		}
 	}
 	
@@ -95,5 +96,41 @@ public class UserService {
 	public void createAdminUser(String username, String password) throws UsernameAlreadyExistsException {
 		addUser(username, password);
 		grantAuthority(username, "ROLE_ADMIN");
+	}
+	
+	public List<BookishUser> getUsers() {
+		return userRepo.findAll().as(List.class);
+	}
+
+	public BookishUser getUserById(Long id) {
+		BookishUser user = userRepo.findOne(id);
+		if(user.getUsername() == null) {
+			return null;
+		}
+		
+		return user;
+	}
+	
+	public static UserDetails getCurrentUser() {
+		try {
+			return (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		}
+		catch(Exception e) {
+			return null;
+		}
+	}
+	
+	public boolean isCurrentUserOrAdmin(String username) {
+		UserDetails details = getCurrentUser();
+		if(details != null) {
+			if(username.equals(details.getUsername())) {
+				return true;
+			}
+			return details.getAuthorities() != null &&
+					details.getAuthorities()
+						.contains(authRepo.findByPropertyValue("name", "ROLE_ADMIN"));
+		}
+		
+		return false;
 	}
 }
