@@ -55,6 +55,10 @@ ul {
 	background-color: white;
 }
 
+.contentPaneLeft {
+	width: 450px;
+}
+
 .adminPanel {
 	margin: 10px;
 	padding: 5px;
@@ -136,4 +140,18 @@ input, textarea {
 	border: 0px;
 	margin: none;
 	padding: 0px;
+}
+
+blockquote {
+	font-style: italic;
+	padding: 10px;
+	background-color: #EEE;
+	border: 1px solid gray;
+	border-left: 10px solid gray;
+}
+
+blockquote cite {
+	display: block;
+	width: 100%;
+	text-align: right;
 }

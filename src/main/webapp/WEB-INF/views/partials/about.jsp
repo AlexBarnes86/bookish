@@ -30,20 +30,9 @@
 		Alex Barnes - <a href="http://www.toastedbits.com">Toastedbits</a> - <a href="https://github.com/AlexBarnes86">Git Hub Profile</a> 
 	</p>
 	
-	<h2>Version</h2>
-	<p>13.03 - Ammolite (Alpha)</p>
-	<p>Bookish does not currently have a stable release schedule</p>
-	
+	<h2>Current Version: Ammolite</h2>
+	<p>Bookish does not currently have a stable release schedule and features are currently under heavy development.</p>
+	<p>Versions are named after precious gemstones in alphabetical order.</p>
 	<h2>Change Log</h2> <%-- TODO: put this info in the db --%>
-	<table>
-		<thead>
-			<tr>
-				<th>Version</th>
-				<th>Date</th>
-				<th>Change Description</th>
-			</tr>   
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
+	<p>Bookish currently uses <a href="https://github.com/AlexBarnes86/bookish/issues/milestones">github</a> for all project management: issue tracking, planning features, and development</p>
 </div>
