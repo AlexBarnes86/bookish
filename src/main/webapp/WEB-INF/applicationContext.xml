@@ -57,6 +57,7 @@
 	<!--<tx:annotation-driven mode="aspectj" transaction-manager="neo4jTransactionManager"/>-->
 	<tx:annotation-driven mode="proxy"/>
 	
-	<bean id="dbInit" class="com.toastedbits.bookish.launch.InitDB" init-method="start" lazy-init="false">
-	</bean>
+	<bean id="dbInit" class="com.toastedbits.bookish.launch.InitDB" init-method="start" lazy-init="false"/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="errorMessages" />
 </beans>

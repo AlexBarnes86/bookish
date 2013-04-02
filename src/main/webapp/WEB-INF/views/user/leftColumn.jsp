@@ -1,1 +1,1 @@
-Left column
+<jsp:include page="/WEB-INF/views/partials/bookishLogo.jsp"/>

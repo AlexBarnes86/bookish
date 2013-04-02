@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.neo4j.graphdb.Direction;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.neo4j.annotation.Fetch;
 import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.Indexed;
@@ -16,6 +17,9 @@ public class BookishUser {
 	private String username; 
 	
 	private String password;
+	
+	@Transient
+	private String passwordConfirm;
 	
 	@GraphId
 	private Long id;
@@ -58,6 +62,15 @@ public class BookishUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String password_confirm) {
+		this.passwordConfirm = password_confirm;
+	}
+
 	public Long getId() {
 		return id;
 	}

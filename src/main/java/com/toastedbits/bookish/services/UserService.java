@@ -52,12 +52,16 @@ public class UserService {
 			bookishUser = new BookishUser();
 			bookishUser.setUsername(username);
 			
-			// this works only if the salt actually uses the username
-			UserDetails user = new User(username, password, true, true, true, true, new HashSet<GrantedAuthority>());
-			bookishUser.setPassword(passwordEncoder.encodePassword(password, saltSource.getSalt(user)));
+			bookishUser.setPassword(getHashedPassword(username, password));
 			
 			userRepo.save(bookishUser);
 		}
+	}
+	
+	// March 2013 - Per our spring security config, this works with username being the salt
+	private String getHashedPassword(String username, String password) {
+		UserDetails user = new User(username, password, true, true, true, true, new HashSet<GrantedAuthority>());
+		return passwordEncoder.encodePassword(password, saltSource.getSalt(user));
 	}
 	
 	@Transactional
@@ -111,7 +115,13 @@ public class UserService {
 		return user;
 	}
 	
-	public static UserDetails getCurrentUser() {
+	@Transactional
+	public void save(BookishUser user, String password) {
+		user.setPassword(getHashedPassword(user.getUsername(), password));
+		userRepo.save(user);
+	}
+	
+	public static UserDetails getSecurityContextCurrentUser() {
 		try {
 			return (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		}
@@ -121,7 +131,7 @@ public class UserService {
 	}
 	
 	public boolean isCurrentUserOrAdmin(String username) {
-		UserDetails details = getCurrentUser();
+		UserDetails details = getSecurityContextCurrentUser();
 		if(details != null) {
 			if(username.equals(details.getUsername())) {
 				return true;
@@ -132,5 +142,24 @@ public class UserService {
 		}
 		
 		return false;
+	}
+	
+	public static boolean currentUserIsAdmin() {
+		UserDetails details = getSecurityContextCurrentUser();
+		for(GrantedAuthority auth : details.getAuthorities()) {
+			if("ROLE_ADMIN".equals(auth.getAuthority())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public BookishUser getCurrentUser() {
+		UserDetails details = getSecurityContextCurrentUser();
+		if(details == null) {
+			return null;
+		}
+		
+		return userRepo.findByPropertyValue("username", details.getUsername());
 	}
 }
