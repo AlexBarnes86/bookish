@@ -1,5 +1,9 @@
 package com.toastedbits.bookish.controllers;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,9 +33,20 @@ public class UsersController {
 		if(user == null) {
 			throw new ResourceNotFoundException();
 		}
-			
-		map.addAttribute("users", userService.getUsers());
+		
+		List<BookishUser> users = userService.getUsers();
+		Collections.sort(users, new Comparator<BookishUser>() {
+			@Override
+			public int compare(BookishUser lhs, BookishUser rhs) {
+				return lhs.getUsername().compareTo(rhs.getUsername());
+			}
+		});
+		
+		map.addAttribute("users", users);
 		map.addAttribute("user", user);
+		if(map.get("newUser") == null) {
+			map.addAttribute("newUser", new BookishUser());
+		}
 		
 		return "users";
 	}

@@ -6,6 +6,8 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 
 @NodeEntity
 public class Authority {
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
+	
 	public Authority() {}
 	public Authority(String name) {
 		this.name = name;

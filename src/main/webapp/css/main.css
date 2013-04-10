@@ -95,15 +95,12 @@ label {
 	margin-right: 0.5em;
 }
 
-input[type="submit"] {
-	width: 5em;
-}
-
-input, textarea {
+input[type="text"], input[type="password"], textarea {
+	display:block;
 	width: 300px;
 }
 
-#bookCategoriesPane form {
+#userCategoriesPane form, #bookCategoriesPane form {
 	display: inline;
 }
 

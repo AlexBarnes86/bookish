@@ -38,6 +38,18 @@ public class BookishUser {
 		authorities.add(auth);
 	}
 	
+	public boolean hasAuthority(String name) {
+		if(authorities != null) {
+			for(Authority auth : authorities) {
+				if(name.equals(auth.getName())) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

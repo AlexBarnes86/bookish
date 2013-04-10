@@ -19,10 +19,10 @@ public class BookishUserValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		BookishUser user = (BookishUser)target;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "usernameEmpty");
-		ValidationUtils.rejectIfEmpty(errors, "password", "passwordEmpty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "emptyField");
+		ValidationUtils.rejectIfEmpty(errors, "password", "emptyField");
 		if(!user.getPassword().equals(user.getPasswordConfirm())) {
-			errors.rejectValue("passwordConfirm", "passwordMismatch");
+			errors.rejectValue("passwordConfirm", "fieldMismatch");
 		}
 	}
 }

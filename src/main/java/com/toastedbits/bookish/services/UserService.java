@@ -121,6 +121,10 @@ public class UserService {
 		userRepo.save(user);
 	}
 	
+	public void delete(BookishUser user) {
+		userRepo.delete(user);
+	}
+	
 	public static UserDetails getSecurityContextCurrentUser() {
 		try {
 			return (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -161,5 +165,9 @@ public class UserService {
 		}
 		
 		return userRepo.findByPropertyValue("username", details.getUsername());
+	}
+
+	public List<BookishUser> getAdminUsers() {
+		return userRepo.findAdminUsers();
 	}
 }
