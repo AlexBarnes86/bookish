@@ -7,15 +7,15 @@
 		<fieldset>
 			<legend>Create New User</legend>
 			
-			<label for="newUserName">Username:</label>
+			<label for="newUserName">Username</label>
 			<form:input id="newUserName" path="username"/>
 			<form:errors path="username" cssClass="fieldError"/>
 			
-			<label for="newUserPassword">Password:</label>
+			<label for="newUserPassword">Password</label>
 			<form:password id="newUserPassword" path="password"/>
 			<form:errors path="password" cssClass="fieldError"/>
 			
-			<label for="newUserPasswordConfirm">Confirm:</label>
+			<label for="newUserPasswordConfirm">Confirm</label>
 			<form:password id="newUserPasswordConfirm" path="passwordConfirm"/>
 			<form:errors path="passwordConfirm" cssClass="fieldError"/>
 			

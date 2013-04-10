@@ -1,7 +1,5 @@
 package com.toastedbits.bookish.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,8 +25,6 @@ public class UserController {
 	@Autowired
 	private BookishUserValidator validator;
 	
-	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-	
 	@RequestMapping(value="/user/{id}", method=RequestMethod.GET)
 	public String getUser(ModelMap map, @PathVariable("id") Long id) {
 		BookishUser currentUser = userService.getCurrentUser();
@@ -47,7 +43,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/user/{id}", method=RequestMethod.PUT)
-	public String getUser(ModelMap map, BookishUser user, @PathVariable Long id, BindingResult binding) {
+	public String putUser(ModelMap map, @ModelAttribute("user") BookishUser user, BindingResult binding, @PathVariable Long id) {
 		BookishUser currentUser = userService.getCurrentUser();
 		BookishUser dbUser = userService.getUserById(id);
 		

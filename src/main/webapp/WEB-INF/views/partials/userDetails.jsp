@@ -18,13 +18,21 @@
 		</div>
 	</sec:authorize>
 	
-	<form action="<spring:url value="/user/${user.id}"/>" method="post">
+	<%--TODO: Add validation messages --%>
+	<form:form commandName="user" action="/user/${user.id}" method="post">
 		<input type="hidden" name="_method" value="put"/>
 		<fieldset>
 			<legend>Change Password</legend>
-			<label for="passwordField">Password:</label><input id="passwordField" type="password" name="password"/>
-			<label for="confirmPasswordField">Confirm:</label><input id="confirmPasswordField" type="password" name="passwordConfirm"/>
+			
+			<label for="passwordField">Password</label>
+			<input id="passwordField" type="password" name="password"/>
+			<%--<form:errors path="password" cssClass="fieldError"/> --%>
+			
+			<label for="confirmPasswordField">Confirm</label>
+			<input id="confirmPasswordField" type="password" name="passwordConfirm"/>
+			<%--<form:errors path="confirmPassword" cssClass="fieldError"/>--%>
+			
 			<input type="submit" value="Save User"/>
 		</fieldset>
-	</form>
+	</form:form>
 </div>

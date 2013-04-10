@@ -89,15 +89,32 @@ ul {
 }
 
 label {
+	clear:both;
 	width: 6em;
 	text-align: right;
 	float: left;
 	margin-right: 0.5em;
+	margin-bottom: 0.5em;
 }
 
-input[type="text"], input[type="password"], textarea {
-	display:block;
+input[type="text"], input[type="password"], .mceEditor {
 	width: 300px;
+	float:left;
+	margin-bottom: 0.5em;
+}
+
+.contentPane input[type="submit"] {
+	clear:both;
+	display: block;
+}
+
+.fieldError {
+	float:left;
+	margin-left: 20px;
+	padding: 3px;
+	color: red;
+	background-color: pink;
+	border: 1px solid red;
 }
 
 #userCategoriesPane form, #bookCategoriesPane form {

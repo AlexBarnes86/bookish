@@ -12,7 +12,7 @@
 				$('textarea.tinymce').tinymce({
 					// Location of TinyMCE script
 					script_url : "<spring:url value="/webjars/tinymce-jquery/3.4.9/jscripts/tiny_mce/tiny_mce.js"/>",
-					
+					height: "500",
 					// General options
 					theme : "advanced",
 					plugins : "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
