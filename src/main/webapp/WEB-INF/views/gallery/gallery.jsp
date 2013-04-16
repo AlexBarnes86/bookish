@@ -18,7 +18,7 @@
 					<img class="${bookClass}" src="${book.image}" alt="${book.title}">
 				</a>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<div class="adminPanel">
+					<div class="adminControl">
 						<form action="<spring:url value="/book/${book.id}"/>" method="post">
 							<input type="hidden" name="_method" value="delete">
 							<input type="submit" value="Delete"/>

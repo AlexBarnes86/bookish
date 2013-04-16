@@ -1,13 +1,15 @@
 <jsp:include page="/WEB-INF/views/partials/top.jsp"/>
-	<div class="leftColumn">
+<div class="row-fluid">
+	<div class="span3">
 		<jsp:include page="${templateLeftColumn}"/>
 	</div>
 	
-	<div class="middleColumn">
+	<div class="span6">
 		<jsp:include page="${templateMiddleColumn}"/>
 	</div>
 	
-	<div class="rightColumn">
+	<div class="span3">
 		<jsp:include page="${templateRightColumn}"/>
 	</div>
+</div>
 <jsp:include page="/WEB-INF/views/partials/bottom.jsp"/>

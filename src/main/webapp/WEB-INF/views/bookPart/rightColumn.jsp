@@ -1,2 +1,2 @@
 <jsp:include page="/WEB-INF/views/partials/controlPane.jsp"/>
-<jsp:include page="/WEB-INF/views/partials/bookPart.jsp"/>
+<jsp:include page="/WEB-INF/views/bookPart/bookPart.jsp"/>

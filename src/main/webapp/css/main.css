@@ -1,31 +1,11 @@
 /* CSS for desktops */
 
-html, body {
-	min-width: 1024px;
-	min-height: 768px;
-	width: 100%;
-	height: 100%;
-	background-image: url('../images/paper_1_@2X.png');
-}
-
 ul {
 	list-style-type: none;
 }
 
-#bookishLogo {
-	height: 135px;
-}
-
 #controlPane {
-	height: 75px;
-}
-
-#searchTextField {
-	width: 8em;
-}
-
-#searchForm {
-	float: right;
+	height: 4.75em;
 }
 
 #controlButtons {
@@ -37,81 +17,77 @@ ul {
 }
 
 #bookGalleryPane {
-	height: 400px;
+	height: 25em;
 }
 
-.contentPane {
-	margin-left: 15px;
-}
-
-.contentPaneRight {
-	margin-left: 15px;
+#bookGalleryPane form {
+	margin: 0em;
 }
 
 .contentPaneLeft, .contentPane, .contentPaneRight {
 	border: 1px solid black;
-	margin-top: 10px;
-	padding: 10px;
-	background-color: white;
-}
-
-.contentPaneLeft {
-	width: 450px;
+	margin-top: .625em;
+	padding: .625em;
 }
 
 .adminPanel {
-	margin: 10px;
-	padding: 5px;
+	padding: .625em;
+	margin-top: .625em;
+	background-color: #EFE;
+	border: 1px solid green;
+}
+
+.adminControl {
+	padding: .625em;
+	margin-top: .625em;
 	background-color: #EFE;
 	border: 1px solid green;
 }
 
 #bookSummary {
-	margin: 0px 10px 10px 10px;
+	margin: 0px .625em .625em .625em;
 	overflow-y: auto;
 }
 
 .galleryBook {
 	float: left;
-	margin-left: 10px;
-	margin-top: 10px;
+	margin-left: .625em;
+	margin-top: .625em;
 }
 
 .galleryBook img {
-	width: 100px;
-	height: 150px;
+	height: 9.375em;
 	-webkit-box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
 	box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, .5);
 }
 
 .selectedBook {
-	border: 3px solid yellow;
+	border: 0.1875em solid yellow;
 }
 
 label {
-	clear:both;
-	width: 6em;
+	clear: both;
+	width: 6em; /* TODO: Make Responsive */
 	text-align: right;
 	float: left;
 	margin-right: 0.5em;
 	margin-bottom: 0.5em;
 }
 
-input[type="text"], input[type="password"], .mceEditor {
-	width: 300px;
+input[type="text"], input[type="password"], .mceEditor, select {
 	float:left;
 	margin-bottom: 0.5em;
 }
 
 .contentPane input[type="submit"] {
-	clear:both;
+	clear: both;
 	display: block;
 }
 
 .fieldError {
 	float:left;
-	margin-left: 20px;
-	padding: 3px;
+	margin-left: 1.25em;
+	padding: .1875em;
 	color: red;
 	background-color: pink;
 	border: 1px solid red;
@@ -122,26 +98,20 @@ input[type="text"], input[type="password"], .mceEditor {
 }
 
 #bookCategoriesPane input {
-	display:inline;
-	width: 4em;
+	display: inline;
 }
 
 #bookCategoriesPane input[type="submit"] {
 	min-width: 2em;
-	width: 2em;
 }
 
 #bookCategoriesPane .adminPanel {
-	padding: 2px;
-	margin: 0;
+	padding: .125em;
+	margin: 0em;
 }
 
 #bookCategoriesPane .adminPanel {
-	float:right;
-}
-
-#bookCategoriesPane .adminPanel input[type="text"] {
-	width: 12em;
+	float: right;
 }
 
 #bookCategoriesPane li {
@@ -149,19 +119,17 @@ input[type="text"], input[type="password"], .mceEditor {
 }
 
 #bookFrame {
-	width: 100%;
-	min-height: 400px;
-	border: 0px;
+	border: 0em;
 	margin: none;
-	padding: 0px;
+	padding: 0em;
 }
 
 blockquote {
 	font-style: italic;
-	padding: 10px;
+	padding: .625em;
 	background-color: #EEE;
 	border: 1px solid gray;
-	border-left: 10px solid gray;
+	border-left: .625em solid gray;
 }
 
 blockquote cite {
@@ -169,3 +137,19 @@ blockquote cite {
 	width: 100%;
 	text-align: right;
 }
+
+/* Make TinyMCE More Responsive: http://www.tinymce.com/develop/bugtracker_view.php?id=5719 */
+.mceEditor table {
+	max-width: none; /* Bug in computation of fullscreen */
+}
+
+.mceEditor table.mceLayout {
+	width: 100% !important;
+	height: auto !important;
+}
+
+table.mceToolbar { float:left; }
+body .mceToolbar div {
+	white-space:normal;
+}
+/* End Make TinyMCE Responsive */

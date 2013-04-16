@@ -63,7 +63,9 @@ dependencies {
 	compile "org.springframework:spring-tx:${springVersion}"
 	compile	"org.springframework:spring-web:${springVersion}"
 	compile "org.springframework:spring-webmvc:${springVersion}"
-	compile "org.webjars:jquery:1.9.1"
+	compile 'org.webjars:modernizr:2.6.2-1'
+	compile 'org.webjars:bootstrap:2.3.1'
+	compile 'org.webjars:jquery:1.9.1'
 	compile "org.webjars:tinymce-jquery:3.4.9"
 	compile "org.springframework.data:spring-data-neo4j:$springDataGraphVersion"
 	compile "org.aspectj:aspectjrt:$aspectjVersion"

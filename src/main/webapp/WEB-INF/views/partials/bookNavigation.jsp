@@ -17,7 +17,7 @@
 		<c:when test="${book != null && book.getChildren() != null}">
 			<ul>
 				<c:set var="tree" value="${book}" scope="request"/>
-				<c:set var="displayPage" value="/WEB-INF/views/partials/bookPartNode.jsp" scope="request"/>
+				<c:set var="displayPage" value="/WEB-INF/views/bookPart/bookPartNode.jsp" scope="request"/>
 				<jsp:include page="/WEB-INF/views/partials/treeView.jsp"/>
 			</ul>
 		</c:when>

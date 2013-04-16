@@ -3,7 +3,6 @@
 
 <c:if test="${curBook != null}">
 	<div id="bookSummaryPane" class="contentPaneRight">
-		<h3>Summary</h3>
 		<div id="bookSummary">
 				<h3><a href="<spring:url value="/book/${curBook.id}"/>">${curBook.title}</a></h3>
 				<spring:escapeBody>${curBook.summary}</spring:escapeBody>

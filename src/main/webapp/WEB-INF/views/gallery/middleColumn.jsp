@@ -3,10 +3,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<jsp:include page="/WEB-INF/views/partials/gallery.jsp"/>
+<jsp:include page="/WEB-INF/views/gallery/gallery.jsp"/>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<div class="adminPanel">
-		<jsp:include page="/WEB-INF/views/partials/createBook.jsp"/>
+		<jsp:include page="/WEB-INF/views/book/newBook.jsp"/>
 	</div>
 </sec:authorize>

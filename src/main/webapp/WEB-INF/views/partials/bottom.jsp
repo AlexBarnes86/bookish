@@ -1,7 +1,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<spring:url value="/webjars/bootstrap/2.3.1/js/bootstrap.min.js" var="bootstrap_js_url"/>
 		<spring:url value="/webjars/jquery/1.9.1/jquery.min.js" var="jquery_url"/>
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="${jquery_url}"><\/script>')</script>
 		<script src="<spring:url value="/js/plugins.js"/>"></script>
 		<script src="<spring:url value="/js/main.js"/>"></script>
@@ -25,7 +27,7 @@
 					theme_advanced_toolbar_location : "top",
 					theme_advanced_toolbar_align : "left",
 					theme_advanced_statusbar_location : "bottom",
-					theme_advanced_resizing : true,
+					theme_advanced_resizing : false,
 					
 					// Example content CSS (should be your site CSS)
 					//content_css : "css/fillmein.css",
