@@ -10,7 +10,7 @@
 			<a href="<spring:url value="/books?category=${categoryTree.parent.id}"/>">Up</a>
 		</c:when>
 		<c:otherwise>
-			<h3>Home</h3>
+			<h3>All Categories</h3>
 		</c:otherwise>
 	</c:choose>
 	

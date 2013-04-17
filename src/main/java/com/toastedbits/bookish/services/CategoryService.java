@@ -27,13 +27,14 @@ public class CategoryService {
 	public static final String ROOT_NAME = "CategoryRoot";
 	
 	@Transactional
-	public void createCategoryRoot() {
+	public Category createCategoryRoot() {
 		Category cat = getByName(ROOT_NAME);
 		if(cat == null) {
 			cat = new Category();
 			cat.setName(ROOT_NAME);
-			catRepo.save(cat);
+			return catRepo.save(cat);
 		}
+		return cat;
 	}
 	
 	public Category getCategoryRoot() {
@@ -42,9 +43,15 @@ public class CategoryService {
 	
 	@Transactional
 	public void createCategory(Category cat) {
+		Category root = getCategoryRoot();
+		if(cat.equals(root)) {
+			catRepo.save(cat);
+			return;
+		}
+		
 		Category parent = cat.getParent();
 		if(parent == null) {
-			parent = getCategoryRoot();
+			parent = root;
 			if(parent == null) {
 				throw new IllegalStateException("Missing Category Root");
 			}

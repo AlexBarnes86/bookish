@@ -14,10 +14,10 @@ import org.springframework.data.neo4j.annotation.RelatedTo;
 public class Category {
 	public Category() {}
 	
-	public Category(Category c) {
-		this.name = c.name;
-		this.parent = c.parent;
-		this.children = c.children;
+	public Category(Category clone) {
+		this.name = clone.name;
+		this.parent = clone.parent;
+		this.children = clone.children;
 	}
 	
 	@GraphId

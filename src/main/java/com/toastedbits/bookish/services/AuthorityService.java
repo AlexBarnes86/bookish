@@ -26,4 +26,8 @@ public class AuthorityService {
 			authRepo.save(auth);
 		}
 	}
+	
+	public Authority getAuthority(String authName) {
+		return authRepo.findByPropertyValue("name", authName);
+	}
 }

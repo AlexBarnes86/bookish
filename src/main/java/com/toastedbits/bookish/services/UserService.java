@@ -42,7 +42,7 @@ public class UserService {
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 	
 	@Transactional
-	public void addUser(String username, String password) throws UsernameAlreadyExistsException {
+	public BookishUser addUser(String username, String password) throws UsernameAlreadyExistsException {
 		BookishUser bookishUser = userRepo.findByPropertyValue("username", username);
 		
 		if (bookishUser != null) {
@@ -54,7 +54,7 @@ public class UserService {
 			
 			bookishUser.setPassword(getHashedPassword(username, password));
 			
-			userRepo.save(bookishUser);
+			return userRepo.save(bookishUser);
 		}
 	}
 	
